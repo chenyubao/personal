@@ -15,7 +15,7 @@ public class RowImpl<T> implements Row<T> {
 	
 	public RowImpl(T t){
 		colMap = new HashMap<Integer, String>();
-		this.t = t;
+		this.t = t; 
 	}
 
 	public Row<T> addMapInfo(Integer colIndex, String fieldName) {
