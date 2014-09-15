@@ -22,9 +22,9 @@ public class ReportUtilsTest extends TestCase {
     	report.build(stuList, new DataMapper<Student>(){
 
 			public void mapData(Student t, Row<Student> row) {
-				row.addMapInfo(1, "name")
-				   .addMapInfo(2, "major")
-				   .addMapInfo(3, "age");
+				row.addMapInfo("Name", "name")
+				   .addMapInfo("Major", "major")
+				   .addMapInfo("Age", "age");
 			}
     		
     	});

@@ -9,19 +9,21 @@ import com.report.excel.Report4J.util.CommonUtils;
 
 public class RowImpl<T> implements Row<T> {
 	
-	private Map<Integer, String> colMap;
+	private Map<String, String> colMap;
+	
+	private Header header;
 	
 	private T t;
 	
 	public RowImpl(T t){
-		colMap = new HashMap<Integer, String>();
+		colMap = new HashMap<String, String>();
 		this.t = t; 
 	}
 
-	public Row<T> addMapInfo(Integer colIndex, String fieldName) {
-		if (colIndex != null && StringUtils.isNotBlank(fieldName)){
+	public Row<T> addMapInfo(String colName, String fieldName) {
+		if (StringUtils.isNotBlank(colName) && StringUtils.isNotBlank(fieldName)){
 			if (CommonUtils.checkFieldExist(fieldName, t.getClass())){
-				colMap.put(colIndex, fieldName);
+				colMap.put(colName, fieldName);
 			}
 		}
 		return this;
