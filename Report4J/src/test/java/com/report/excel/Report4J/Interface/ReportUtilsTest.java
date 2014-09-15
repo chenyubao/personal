@@ -19,9 +19,9 @@ public class ReportUtilsTest extends TestCase {
     public void testCreateReport(){
     	Report report = ReportUtils.createReport(ReportType.XLS);
     	List<Student> stuList = buildTestStudents();
-    	report.build(stuList, new DataMapper<Student>(){
+    	report.build("report", stuList, new DataMapper<Student>(){
 
-			public void mapData(Student t, Row<Student> row) {
+			public void mapData(Row<Student> row) {
 				row.addMapInfo("Name", "name")
 				   .addMapInfo("Major", "major")
 				   .addMapInfo("Age", "age");
