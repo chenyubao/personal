@@ -34,6 +34,9 @@ public class HeaderImpl implements Header {
 		}
 	}
 
+	public HeaderImpl(String colName, List<String> headStyle) {
+	}
+
 	public Pos write(HSSFReport hssfReport, Pos pos) {
 		if (parent != null){
 			parent.write(hssfReport, pos);

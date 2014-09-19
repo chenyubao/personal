@@ -2,6 +2,7 @@ package com.report.excel.Report4J.Interface;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.collections4.MapUtils;
@@ -27,14 +28,7 @@ public class RowImpl<T> implements Row<T> {
 	}
 
 	public Row<T> addMapInfo(String colName, String fieldName) {
-		if (StringUtils.isNotBlank(colName) && StringUtils.isNotBlank(fieldName)){
-			if (CommonUtils.checkFieldExist(fieldName, t.getClass())){
-				Header header = new HeaderImpl(colName);
-				Column col = new ColumnImpl(fieldName);
-				colMap.put(header, col);
-			}
-		}
-		return this;
+		return addMapInfo(colName, fieldName, null, null);
 	}
 
 	public Object getRow() {
@@ -47,6 +41,23 @@ public class RowImpl<T> implements Row<T> {
 			return colMap.keySet();
 		}
 		return null;
+	}
+
+	public Row<T> addMapInfo(String colName, String fieldName,
+			List<String> headStyle, List<String> colStyle) {
+		if (StringUtils.isNotBlank(colName) && StringUtils.isNotBlank(fieldName)){
+			if (CommonUtils.checkFieldExist(fieldName, t.getClass())){
+				Header header = new HeaderImpl(colName, headStyle);
+				Column col = new ColumnImpl(fieldName, colStyle);
+				colMap.put(header, col);
+			}
+		}
+		return this;
+	}
+
+	public Row<T> addMapInfo(String colName, String fieldName,
+			List<String> headStyle) {
+		return addMapInfo(colName, fieldName, headStyle, null);
 	}
 
 }
